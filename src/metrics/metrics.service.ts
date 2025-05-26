@@ -23,7 +23,7 @@ export class MetricsService {
   }
 
   async getAll(): Promise<Record<string, any>[]> {
-    const flux = `from(bucket:"${this.bucket}") |> range(start: -1h)`;
+    const flux = `from(bucket:"${this.bucket}") |> range(start: -5m)`;
     const rows = await this.qApi.collectRows<Record<string, any>>(flux);
     return rows;
   }
